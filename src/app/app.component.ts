@@ -1,5 +1,8 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
+import { QuestionPaperViewComponent } from 'src/question-paper/src/lib/components/question-paper-view/question-paper-view.component';
+import { QuestionPaperTemplateEditiorComponent } from 'src/question-paper/src/lib/modules/question-paper-editor/components/question-paper-template-editior/question-paper-template-editior.component';
+import { QuestionPaperService } from 'src/question-paper/src/lib/services/question-paper.service';
 import { FibTextLayoutComponent, McqSingleSelectLayoutComponent } from 'src/quiz-templates/src';
 
 @Component({
@@ -76,10 +79,46 @@ export class AppComponent {
     SCQ: McqSingleSelectLayoutComponent,
     'mcq-tf': McqSingleSelectLayoutComponent,
     FIB: FibTextLayoutComponent,
+    QPV: QuestionPaperViewComponent,
+    QPE:QuestionPaperTemplateEditiorComponent
   };
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver){}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,private questionPaperService:QuestionPaperService){}
   
+  ngOnInit(){
+    setTimeout(()=>{
+       this.loadQuestionPaperView("QPV");
+    },2000)
+    this.questionPaperService.qpHomePage.subscribe(res=>{
+       console.log(res);
+      //  if(res =="close")
+      //  this.viewRef.clear();
+      //  else
+      //  this.loadQuestionPaperView("QPV");
+
+       if(res == "editor")
+       {
+          this.loadQuestionPaperView("QPE");
+       }else{
+        this.loadQuestionPaperView("QPV");
+       }
+
+    })
+  }
+
+  loadQuestionPaperView(type){
+    if(this.viewRef){
+      this.viewRef.clear();
+    }
+
+    let componentTemplate = this.componentHashmap[type];
+
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      componentTemplate
+    );
+      //   const componentRef = this.viewRef.createComponent<any>(componentFactory);
+        const componentRef = this.viewRef.createComponent<any>(componentFactory);
+  }
   // ngOnInit(){
   //   this.loadTemplate('MCQ')
   // }
@@ -110,3 +149,7 @@ export class AppComponent {
   //   componentRef.instance.layoutView = this.layoutView;
   // }
 }
+function componentTemplate(componentTemplate: any) {
+  throw new Error('Function not implemented.');
+}
+

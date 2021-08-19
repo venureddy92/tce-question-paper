@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { QuestionPaperService } from '../../services/question-paper.service';
 
 @Component({
   selector: 'tce-qp-question-paper-view',
@@ -15,13 +16,15 @@ export class QuestionPaperViewComponent implements OnInit {
   ]
   openAdditionPopUp = false;
 
-  constructor() { }
+ @Output() childEmitter = new EventEmitter();
+  constructor(private questionPaperService:QuestionPaperService) { }
 
   ngOnInit(): void {
   }
   open(content:any){
     content.open(content);
     this.openAdditionPopUp = false;
+    // this.childEmitter.emit("close");
   }
 
   selectPage(i, event){
@@ -31,6 +34,7 @@ export class QuestionPaperViewComponent implements OnInit {
     });
     this.tabsOptions[i].selected = true;
   }
+
 
   openPlanningMode() {
     this.openAdditionPopUp = !this.openAdditionPopUp;

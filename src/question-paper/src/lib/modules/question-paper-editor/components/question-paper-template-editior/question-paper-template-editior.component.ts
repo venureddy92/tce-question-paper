@@ -4,6 +4,7 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 // import {QuizTemplatesComponent } from '@tce-qp/quiz-templates';
 import { Subject } from 'rxjs';
 import { McqSingleSelectLayoutComponent, FibTextLayoutComponent, EssayTextLayoutComponent } from 'src/quiz-templates/src';
+import { QuestionPaperService } from 'src/question-paper/src/lib/services/question-paper.service';
 // import { QuizTemplatesModule } from '@tce-qp/quiz-templates';
 // import { McqSingleSelectLayoutComponent } from '@tce-qp/quiz-templates';
 
@@ -322,7 +323,7 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
   //   essay: EssayTextLayoutComponent
   // };
   constructor(config: NgbModalConfig, private modalService: NgbModal,
-    private componentFactoryResolver: ComponentFactoryResolver) {
+    private componentFactoryResolver: ComponentFactoryResolver,public questionPaperService:QuestionPaperService,) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
@@ -364,6 +365,9 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
   //   // this.sections.push('section ' + this.sections.length);
   // }
 
+  navigateToHome(){
+    this.questionPaperService.qpHomePage.next("home");
+  }
   pageSections:any[] = [];
   // [{"name":""}]
   defaultSection = {"name":"Untitled Section",contents:[],"sectionNo":0}
