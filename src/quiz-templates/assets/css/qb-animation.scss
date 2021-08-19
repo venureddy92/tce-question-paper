@@ -1,0 +1,31 @@
+.qb-qstem-img {
+  img {
+    transition: all 0.3s;
+  }
+}
+.qb-options-div-maxht{
+  transition: all 0.5s;
+}
+.qb-option-done {
+  transition: all 0.5s;
+}
+.qb-form-side-sec {
+  transition: all 0.7s;
+  .qb-form-side-wrapper {
+    transition: all 1s 0.2s;
+  }
+}
+.qb-form-side-sec-hidden {
+  .qb-form-side-wrapper {
+    transition: all 0.15s;
+  }
+}
+.qb-btn-custom-pos {
+  transition: opacity 0.3s;
+}
+.qb-preview-transition-hidden {
+  transition: all 1s 0s;
+}
+.qb-preview-transition-shown{
+  transition-delay: 0.3s;
+}

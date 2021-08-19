@@ -1,0 +1,11 @@
+<select (change)="selectTemplate($event.target.value)" class="questiontype">
+    <option *ngFor="let template of templates" [value]="template.type">{{template.type}}</option>
+  </select>
+  <div>Marks 20</div>
+  <!-- <div>{{defaultJson.question_type}}</div> -->
+  <div>
+    question paper editor
+  </div>
+
+  <!-- <app-qp-template-loader [templateData]="templateData" [previewState]="previewState"></app-qp-template-loader> -->
+  <ng-template #targetRefView></ng-template>

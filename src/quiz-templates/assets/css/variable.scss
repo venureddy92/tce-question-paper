@@ -1,0 +1,45 @@
+// black shades
+$dark-black: #000;
+$color-dark:#161616;
+$black: #282c34;
+$light-black:#292929;
+// white shades
+$white: #fff;
+$off-white: #ccc;
+$light-white-one:#ddd;
+$light-white-two:#eee;
+$light-white-three:#aaa;
+$dark-grey:#979797;
+// grey shades
+$grey: rgb(220, 220, 220);
+$smoke-grey:#e4e4e4;
+$off-grey:#f0f0f0;
+// blue shades
+$blue: #0069d9;
+$ocean-blue:#416dea;
+
+$red:red;
+
+$blue-green-grad:linear-gradient(90deg, #6d71ff 0%, #248ef6 100%);
+
+
+// common css
+.grab {cursor: -webkit-grab; cursor: grab;}
+.pointer{cursor: pointer;}
+.scrollbar-hidden::-webkit-scrollbar { width: 0 !important }
+// margin css
+.mar10-r{
+    margin-right: 10px;
+}
+.marb-35{
+    margin-bottom: 35px;
+}
+.mar40-tb{
+    margin: 40px 0;
+}
+
+
+// padding css
+.padd20-all {
+    padding: 20px;
+  }

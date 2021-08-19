@@ -1,0 +1,182 @@
+@import "bootstrap";
+@import './theme_mixin.scss';
+@import './element_mixins.scss';
+@import './qb-animation.scss';
+
+:root,body,html{
+  font-family: 'Quicksand', sans-serif!important;
+}
+
+@mixin applyTheme($name) {
+  @include BodyBackgroundcolor($name);
+  @include fontColor($name);
+  .btn {
+    @include ButtonTheme($name);
+  }
+  // .fa-trash,
+  // .fa-bars,
+  // .fa-check {
+  //   @include fontColor($name);
+  // }
+
+  // .body {
+  //   border-top: 1px solid;
+  //   border-bottom: 1px solid;
+  //   @include borderColor($name);
+    // .ql-editor {
+    //   border: 1px solid;
+    //   @include borderColor($name);
+    //   @include fontColor($name);
+    //   margin-bottom: 15px;
+    // }
+  // }
+  .remove-icon {
+ @include removeIconColor($name)
+}
+
+// .drag-icon {
+//   @include dragIconColor($name)
+// }
+
+
+
+}
+
+.light {
+  @include applyTheme(light);
+}
+.dark {
+  @include applyTheme(light);
+}
+
+
+
+
+
+/*---*/
+.pd-0{padding:0px;}
+.padding-15{padding:15px;}
+.pd-15{padding:0px 15px;}
+.pd-r-60{padding-right:60px;}
+.mt-20 {margin-top: 20px;}
+.mb-15{margin-bottom:15px;}
+.mt-15{margin-top:15px;}
+button:hover, button:focus,input:hover{
+   outline:none !important;
+   box-shadow:none !important;
+}
+.ql-editor em{font-style: italic;}
+img{max-width:100%;}
+
+
+.main-div{
+  @extend .col-md-12;
+
+    min-height: 260px;
+    position: relative;
+    padding: 0 15px;
+    border-radius: 10px;
+    margin: 0;
+    margin-top:30px;
+    background-color: #fff;
+    box-shadow: 0 0 1.875rem 0 rgba(20,55,70,.2);
+  // margin: 0 auto;
+  // padding-top:15px;
+  // padding-bottom: 15px;
+  // -webkit-box-shadow: 0px 0px 33px -23px rgba(0,0,0,0.75);
+  // -moz-box-shadow: 0px 0px 33px -23px rgba(0,0,0,0.75);
+  // box-shadow: 0px 0px 33px -23px rgba(0,0,0,0.75);
+}
+
+.cdk-drag{
+  cursor:pointer;
+}
+.cdk-drag-placeholder{
+  opacity: 0.2;
+  background:#eeeeee6e;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+
+.col-6-div{
+  .quill-editor{
+    padding-top: 0px ;
+    padding: 15px 0px;
+    margin-top: 0px;
+  }
+}
+
+/***sort-list-template***/
+.col-div-6{
+  .span-div{
+    display:none !important;
+  }
+}/***sort-list-template***/
+
+.overWordLimit{
+  .ql-editor{
+    background: #ffdada;
+    border-color:#e14747;
+  }
+}
+.custom-table{
+  .optDiv{
+    border-right:0px;
+  }
+}
+
+.qb-col-dashboard-edit-div{
+  background: #f0f0f0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  border-top-right-radius: 8px;
+  .qb-edit-btn{
+    color: #000;
+    background: transparent;
+    border: 0;
+    width: 100%;
+    padding: 15px;
+    background: #e5e5e5;
+    border-radius: 0;
+    font-size: 20px;
+  }
+  .btn:first-child{
+    border-top-right-radius: 8px;
+  }
+}
+
+.ql-bubble .ql-tooltip{
+  min-width:500px;
+  max-width:650px;
+}
+
+
+.nsm-dialog-open{
+  display:flex;
+  align-items:center;
+  height:100%;
+  .nsm-content{
+    width:100%;
+    text-transform: capitalize;
+  }
+}
+.correctResponseDiv {
+  padding: 15px;
+  background: #e5ffd1;
+  border-radius: 10px;
+}
+
+
+/*---*/
+
+.nb-theme-default nb-select.appearance-outline.status-basic .select-button.placeholder {
+    color: #000!important;
+    font-weight: 600;
+    font-size:15px;
+}
+
+
+.flex-end {
+  justify-content: flex-end;
+}

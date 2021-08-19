@@ -1,0 +1,35 @@
+/* Global imports */
+@import '../../css/variables';
+
+:host {
+  padding: 0px;
+  box-sizing: border-box;
+  color: var(--text-color-primary);
+  border: 1px solid #303439;
+  background-color: #22262a !important;
+  box-shadow: 0 30px 100px 0 rgba(0, 0, 0, 0.05),
+    0 20px 25px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  position: absolute;
+  z-index: 240;
+
+  &:before,
+  &:after {
+    content: ' ';
+    position: absolute;
+    top: 100%;
+    left: 45px;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+  }
+  &:before {
+    margin-left: -28px;
+    border-color: #303439 transparent transparent transparent;
+  }
+  &::after {
+    z-index: 2;
+    margin-left: -28px;
+    border-color: #22262a transparent transparent transparent;
+  }
+}

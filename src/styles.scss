@@ -1,0 +1,206 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* Add application styles & imports to this file! */
+html,body{
+    font-family: 'Quicksand', sans-serif;
+}
+.dark-theme-modal{
+   .modal-content{
+
+       background: #22262A;
+       box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
+       border-radius: 10px;
+        color: #fff;
+    }
+
+    .modal-title{
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 31px;
+    }
+.modal-footer,
+    .modal-header{
+        border: 0;
+        padding: 30px;
+    }
+    .modal-body{
+        padding: 0 30px;
+    }
+
+
+    .subject-select{
+        background: none;
+        padding: 0;
+        border: 0;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #fff;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .form-control{
+        padding: 13px 15px;
+ 
+        background: #000000;
+        border: 1px solid #303439;
+        box-sizing: border-box;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 400;
+        font-size: 15px;
+        font-family: 'Quicksand', sans-serif;
+        height: 50px;
+    }
+    .form-label{
+        font-size: 14px;
+    }
+    .close{
+        outline: none!important;
+    }
+    .preview-template{
+        height: 515px;
+    }
+}
+
+
+.fbold{
+    font-weight: 600;
+}
+
+.btn-link-white{
+    color: #fff!important;
+    text-decoration: none;
+}
+
+.btn-primary{
+    background: linear-gradient(90deg, #6D71FF 0%, #248EF6 100%);
+border-radius: 5px; 
+}
+.btn-group-lg>.btn, .btn-lg{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+
+
+
+.bg-sec{
+    background: #F6F6F6;
+    min-height: 100vh;
+    padding: 100px 0 0;
+}
+.editor-section-outer{
+    margin: 0 auto;
+    max-width: 740px;
+}
+    .editor-section{
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    // border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 18px;    
+    .head{
+        padding: 0 0 10px;
+    }
+}
+
+
+
+
+.templlate-label{
+    font-size: 14px;
+line-height: 17px;
+ 
+color: rgba(0, 0, 0, 0.25);
+}
+
+
+
+.tool-bar{
+    background: #22262A;
+    border-radius: 6px;
+    position: fixed;
+    right: 10%;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    button{
+        background: none;
+        border: 0;
+        padding: 10px;
+        outline: none;
+        margin:0 5px;
+    }
+    .sep{
+        text-align: center;
+        padding: 2px 0;
+    }
+}
+
+
+
+.bottom-option{
+    background: #22262A;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+   h4{
+       font-weight: bold;
+       padding: 0;
+       margin: 0;
+       font-size: 15px;
+   } 
+    
+    .sep{
+        border-right: 1px solid #fff;
+        height: 23px;
+        width: 1px;
+        margin-right: 10px;
+    }
+    .right-actions{
+        .btn{
+            margin-left: 15px;
+        }
+    }
+}
+
+.template-setting{
+    padding: 0 0 15px;
+    text-align: center;
+    .btn{
+        margin: 0 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;   
+        font-size: 14px;
+    }
+}
+
+
+.qsnpaper-listing{
+    margin: 0 0 30px;
+    .item{
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        h4{
+            font-size: 18px;
+        }
+        p{
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.25);
+            padding: 0;
+            margin: 0;
+        }
+    }
+}

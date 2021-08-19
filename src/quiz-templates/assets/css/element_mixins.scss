@@ -1,0 +1,493 @@
+@mixin switch(
+  $toggleSwitch-width,
+  $toggleSwitch-height,
+  $toggleSwitch-border-radius,
+  $toggleSwitch-label-font-size,
+  $toggleSwitch-switch-font-size,
+  $toggleSwitch-selected-color,
+  $toggleSwitch-not-selected-color
+) {
+  position: relative;
+  max-width: $toggleSwitch-width;
+  $toggleSwitch-switch-width: $toggleSwitch-width/2;
+  label {
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-size: $toggleSwitch-switch-font-size;
+    width: $toggleSwitch-width;
+    margin: 0;
+    .can-toggle__switch {
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s cubic-bezier(0, 1, 0.5, 1);
+      background: $toggleSwitch-not-selected-color;
+      height: $toggleSwitch-height;
+      flex: 0 0 $toggleSwitch-width;
+      border-radius: $toggleSwitch-border-radius;
+      border: 1px solid $toggleSwitch-selected-color;
+      &:before {
+        color: $toggleSwitch-selected-color;
+        left: $toggleSwitch-switch-width;
+        font-size: $toggleSwitch-switch-font-size;
+        font-weight: bold;
+        line-height: $toggleSwitch-height;
+        width: $toggleSwitch-switch-width;
+        padding: 0 12px;
+        content: attr(data-checked);
+        position: absolute;
+        top: 0;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      &:after {
+        top: 50%;
+        margin-top: -($toggleSwitch-height/2);
+        left: -1px;
+        width: $toggleSwitch-switch-width;
+        line-height: $toggleSwitch-height;
+        font-size: $toggleSwitch-switch-font-size;
+        font-weight: bold;
+        -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 1, 0.5, 1);
+        transition: transform 0.3s cubic-bezier(0, 1, 0.5, 1);
+        color: $toggleSwitch-not-selected-color;
+        content: attr(data-unchecked);
+        position: absolute;
+        z-index: 5;
+        text-transform: uppercase;
+        text-align: center;
+        background: $toggleSwitch-selected-color;
+        transform: translate3d(0, 0, 0);
+        border-radius: $toggleSwitch-border-radius 0 0
+          $toggleSwitch-border-radius;
+      }
+    }
+  }
+  input[type='checkbox'] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+&:focus ~ label,
+&:hover ~ label {
+  .can-toggle__switch {
+    background-color: $toggleSwitch-not-selected-color;
+    &::after {
+      color: $toggleSwitch-not-selected-color;
+    }
+  }
+}
+&:hover ~ label {
+  color: $toggleSwitch-selected-color;
+}
+&:checked {
+  ~ label {
+    &:hover,
+    &:focus {
+      color: $toggleSwitch-not-selected-color;
+    }
+    .can-toggle__switch {
+      &:before {
+        content: attr(data-unchecked);
+        left: 0;
+      }
+      &:after {
+        color: $toggleSwitch-not-selected-color;
+        border-radius: 0 $toggleSwitch-border-radius
+          $toggleSwitch-border-radius 0;
+        transform: translate3d(
+          $toggleSwitch-width - ($toggleSwitch-switch-width),
+          0,
+          0
+        );
+        content: attr(data-checked);
+      }
+    }
+  }
+}
+  }
+}
+
+@mixin radiobox(
+  $checkbox-padding,
+  $checkbox-dimension,
+  $checkbox-border-width,
+  $checkbox-border-radius,
+  $checkbox-tick-width,
+  $checkbox-marginright,
+  $checkbox-tick-color,
+  $checkbox-bg-color,
+  $checkbox-checked-bg-color,
+  $checkbox-border-color,
+  $checkbox-checked-border-color,
+  $checkbox-label-color,
+  $checkbox-checked-label-color
+) {
+  input[type='radio'] {
+    border: 0;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+
++ .normal-checkbox {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  line-height: $checkbox-dimension;
+  padding: $checkbox-padding;
+  margin: 0;
+  &::before {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: content-box;
+    content: '';
+    border-radius: $checkbox-border-radius;
+    width: $checkbox-dimension;
+    height: $checkbox-dimension;
+    background-color: $checkbox-bg-color;
+    border: $checkbox-border-width solid $checkbox-border-color;
+    margin-right: $checkbox-marginright;
+    top: 50%;
+    left: 0;
+  }
+  &::after {
+    box-sizing: content-box;
+    content: '';
+    background-color: transparent;
+    transform-origin: 50%;
+    position: absolute;
+    top: 50%;
+    left: calc(
+      #{$checkbox-padding} + #{$checkbox-border-width} + #{$checkbox-dimension}/
+        5
+    );
+    border-radius: $checkbox-border-radius;
+    width: $checkbox-dimension/2;
+    height: $checkbox-dimension/5;
+    margin-top: calc(#{$checkbox-dimension} / -2 / 2);
+    border-style: solid;
+    border-color: $checkbox-tick-color;
+    border-width: 0 0 $checkbox-tick-width $checkbox-tick-width;
+    border-radius: 0;
+    border-image: none;
+    transform: rotate(-45deg) scale(0);
+    transition: none;
+  }
+}
+&:checked {
+  + .normal-checkbox {
+    color: $checkbox-checked-label-color;
+    &::before {
+      background-color: $checkbox-checked-bg-color;
+      border-color: $checkbox-checked-border-color;
+    }
+    &::after {
+      content: '';
+      transform: rotate(-45deg) scale(1);
+      transition: transform 200ms ease-out;
+    }
+  }
+}
+
++ .checkbox-tick-label {
+  @extend .normal-checkbox;
+}
+&:checked {
+  + .checkbox-tick-label {
+    &::before {
+      background-color: green;
+      border-color: green;
+    }
+    &::after {
+      content: '';
+      transform: rotate(-45deg) scale(1);
+      transition: transform 200ms ease-out;
+    }
+  }
+}
+
++ .checkbox-cross-label{
+  @extend .normal-checkbox;
+  &::after{
+    opacity: 0;
+  }
+}
+&:checked {
+  + .checkbox-cross-label {
+    &::before {
+      background-color: red;
+      border-color: red;
+      content: '\f00d';
+      font-family: 'FontAwesome';
+      color: $white;
+      text-align: center;
+      font-size: $checkbox-dimension - 6px;
+    }
+    &::after {
+      border:none;
+    }
+  }
+}
+
+  }
+}
+
+@mixin checkbox(
+  $checkbox-padding,
+  $checkbox-dimension,
+  $checkbox-border-width,
+  $checkbox-border-radius,
+  $checkbox-tick-width,
+  $checkbox-marginright,
+  $checkbox-tick-color,
+  $checkbox-bg-color,
+  $checkbox-checked-bg-color,
+  $checkbox-border-color,
+  $checkbox-checked-border-color,
+  $checkbox-label-color,
+  $checkbox-checked-label-color
+) {
+  input[type='checkbox'] {
+    border: 0;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+
++ .normal-checkbox {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  line-height: $checkbox-dimension;
+  padding: $checkbox-padding;
+  margin: 0;
+  &::before {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: content-box;
+    content: '';
+    border-radius: $checkbox-border-radius;
+    width: $checkbox-dimension;
+    height: $checkbox-dimension;
+    background-color: $checkbox-bg-color;
+    border: $checkbox-border-width solid $checkbox-border-color;
+    margin-right: $checkbox-marginright;
+    top: 50%;
+    left: 0;
+  }
+  &::after {
+    box-sizing: content-box;
+    content: '';
+    background-color: transparent;
+    transform-origin: 50%;
+    position: absolute;
+    top: 50%;
+    left: calc(
+      #{$checkbox-padding} + #{$checkbox-border-width} + #{$checkbox-dimension}/
+        5
+    );
+    border-radius: $checkbox-border-radius;
+    width: $checkbox-dimension/2;
+    height: $checkbox-dimension/5;
+    margin-top: calc(#{$checkbox-dimension} / -2 / 2);
+    border-style: solid;
+    border-color: $checkbox-tick-color;
+    border-width: 0 0 $checkbox-tick-width $checkbox-tick-width;
+    border-radius: 0;
+    border-image: none;
+    transform: rotate(-45deg) scale(0);
+    transition: none;
+  }
+}
+&:checked {
+  + .normal-checkbox {
+    color: $checkbox-checked-label-color;
+    &::before {
+      background-color: $checkbox-checked-bg-color;
+      border-color: $checkbox-checked-border-color;
+    }
+    &::after {
+      content: '';
+      transform: rotate(-45deg) scale(1);
+      transition: transform 200ms ease-out;
+    }
+  }
+}
+
++ .checkbox-tick-label {
+  @extend .normal-checkbox;
+}
+&:checked {
+  + .checkbox-tick-label {
+    &::before {
+      background-color: green;
+      border-color: green;
+    }
+    &::after {
+      content: '';
+      transform: rotate(-45deg) scale(1);
+      transition: transform 200ms ease-out;
+    }
+  }
+}
+
++ .checkbox-cross-label{
+  @extend .normal-checkbox;
+  &::after{
+    opacity: 0;
+  }
+}
+&:checked {
+  + .checkbox-cross-label {
+    &::before {
+      background-color: red;
+      border-color: red;
+      content: '\f00d';
+      font-family: 'FontAwesome';
+      color: $white;
+      text-align: center;
+      font-size: $checkbox-dimension - 6px;
+    }
+    &::after {
+      border:none;
+    }
+  }
+}
+
+  }
+}
+
+@mixin radio($radio-dimension, $radio-background-color, $radio-selectedcolor) {
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+
++ .radio-label {
+  &::before {
+    content: '';
+    background: $radio-background-color;
+    border: 1px solid $radio-selectedcolor;
+    width: $radio-dimension;
+    height: $radio-dimension;
+    border-radius: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 250ms ease;
+  }
+}
+&:checked {
+  + .radio-label {
+    &::before {
+      background-color: $radio-selectedcolor;
+      box-shadow: inset 0 0 0 4px $radio-background-color;
+    }
+  }
+}
++ .radio-tick-label {
+   &::before {
+    content: '\f00c';
+    background: green;
+    border: 1px solid green;
+    width: $radio-dimension;
+    height: $radio-dimension;
+    border-radius: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 250ms ease;
+    font-family: 'FontAwesome';
+    color: $white;
+    font-size: $radio-dimension/2;
+  }
+}
++ .radio-cross-label {
+  &::before {
+    content: '\f00d';
+    background: red;
+    border: 1px solid red;
+    width: $radio-dimension;
+    height: $radio-dimension;
+    border-radius: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 250ms ease;
+    font-family: 'FontAwesome';
+    color: $white;
+    font-size: $radio-dimension/2;
+  }
+}
+  }
+}
+
+@mixin radio-switch(
+  $radioswitch-background-color,
+  $radioswitch-selected-background-color,
+  $radioswitch-color,
+  $radioswitch-selected-color,
+  $raddioswitch-border-color,
+  $radioswitch-label-fontsize,
+  $radioswitch-label-vertical-padding,
+  $radioswitch-label-horizontal-padding
+) {
+  display: flex;
+
+  label {
+    cursor: pointer;
+    background-color: $radioswitch-background-color;
+    color: $radioswitch-color;
+    font-size: $radioswitch-label-fontsize;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    padding: $radioswitch-label-horizontal-padding
+    $radioswitch-label-vertical-padding;
+    margin-right: -1px;
+    border: 1px solid $raddioswitch-border-color;
+    transition: all 0.2s ease-in;
+    &:first-of-type {
+      border-radius: 4px 0 0 4px;
+    }
+    &:last-of-type {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+
+  input[type='radio'] {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    border: 0;
+    &:checked {
+
+  + label {
+    background-color: $radioswitch-selected-background-color;
+    color: $radioswitch-selected-color;
+  }
+}
+  }
+}
+p{margin-bottom:0px;}
+
+// @mixin text-overflow() {
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+

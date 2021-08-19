@@ -1,0 +1,7 @@
+<!-- <mcq-single-select-layout [templateData]="templateData" [previewState]="previewState" [submit]="submit" [save]="save"
+  [metadataSidebar]="metadata" [viewDevice]="viewDevice" [layoutView]="layoutView">
+</mcq-single-select-layout> -->
+<select (change)="selectTemplate($event.target.value)">
+    <option *ngFor="let template of templates" [value]="template.type">{{template.type}}</option>
+</select>
+<ng-template #targetRefView></ng-template>

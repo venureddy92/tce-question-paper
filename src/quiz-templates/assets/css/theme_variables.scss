@@ -1,0 +1,32 @@
+
+@import './variable.scss';
+
+$themes: (
+  light: (
+    backgroundColor: $white,
+    fontColor: $dark-black,
+    buttonColor: $blue,
+    buttonBackgroundColor:$grey,
+    buttonBorderColor:$blue,
+    borderColor: $dark-black,
+    iconRemoveIconcolor:$red,
+    iconDragIconcolor:$blue,
+    checkboxBackgroundcolor:$white,
+    checkboxTickcolor:$white,
+    checboxCheckedBackgroundcolor:$blue,
+    checkboxBordercolor:$blue,
+    checkboxCheckedBordercolor:$blue,
+    checkboxLabelcolor:$dark-black,
+    checkboxCheckedLabelcolor:$blue,
+  ),
+  dark: (
+    backgroundColor: $black,
+    fontColor: $white,
+    buttonColor: $dark-black,
+    buttonBackgroundColor: $white,
+    buttonBorderColor:$black,
+    borderColor: $off-white,
+    iconRemoveIconcolor:$white,
+    iconDragIconcolor:$white
+  )
+);

@@ -1,0 +1,33 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let option of tabsOptions; let i=index" (click)="selectPage(i, $event)"
+     [class.active]="option.selected">
+      <a class="nav-link" aria-current="page">{{option.title}}</a>
+    </li>
+</ul>
+<div class="tab-content" *ngFor="let option of tabsOptions; let i = index">
+    <div class="pageInner" *ngIf="option.selected">
+        {{option.content}}
+        <!-- <div class="row">
+          <div col="col md 4">Total </div>
+          <div col="col md 4">Due Today</div>
+          <div col="col md 4">Drafts</div>
+        </div> -->
+  </div>
+  </div>
+<tce-qp-qp-setup #content></tce-qp-qp-setup>
+<!-- <tce-qp-qp-toolbar></tce-qp-qp-toolbar> -->
+<!-- <button class="btn btn-lg btn-outline-primary qp-setup-button" (click)="open(content)">Setup Form</button> -->
+<div class="addButtonPlusSign" id="shortcut-menu" (click)="openPlanningMode()">
+    <img id="shortcut-menu" class="addButtonPlusSign-icon" src="assets/images/myPlusAddRessource.svg" />
+  </div>
+  <div (click)="open(content)" class="additionPopUp" *ngIf="openAdditionPopUp">
+    <!-- <tce-flyout class="content-PlanningMode" *ngIf="currentMenu === 'Question Bank'">
+      <div class="planningModePopUpPadding">
+        <label>Create New</label>
+        <ul>
+          <li class="listMargin" (click)="open(content)">Add Question Paper</li>
+        </ul>
+      </div>
+    </tce-flyout> -->
+    Add Question Paper
+  </div>

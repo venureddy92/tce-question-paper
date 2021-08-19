@@ -1,0 +1,43 @@
+@import './theme_variables.scss';
+
+@mixin theme($name) {
+  $theme: map-get($themes, $name) !global;
+}
+
+@mixin ButtonTheme($name) {
+  @include theme($name);
+  color: map-get($theme, buttonColor);
+  background-color: map-get($theme, buttonBackgroundColor);
+  border-color: map-get($theme, buttonBorderColor);
+}
+
+@mixin fontColor($name) {
+  @include theme($name);
+  color: map-get($theme, fontColor) !important; 
+}
+
+@mixin borderColor($name) {
+  @include theme($name);
+  border-color: map-get($theme, borderColor);
+}
+
+@mixin BodyBackgroundcolor($name) {
+  @include theme($name);
+  background: map-get($theme, backgroundColor);
+}
+
+@mixin removeIconColor($name) {
+    @include theme($name);
+    color: map-get($theme,  iconRemoveIconcolor);
+}
+
+@mixin dragIconColor($name) {
+    @include theme($name);
+    color: map-get($theme,  iconDragIconcolor);
+}
+
+@mixin checkboxColor {
+  @include theme($name);
+  
+  
+}
