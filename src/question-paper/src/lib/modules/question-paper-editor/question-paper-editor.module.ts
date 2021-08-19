@@ -13,6 +13,7 @@ import { FibTextModule } from 'src/quiz-templates/src';
 import { QpToolbarComponent } from '../../components/qp-toolbar/qp-toolbar.component';
 import { QpTemplateLoaderComponent } from './components/qp-template-loader/qp-template-loader.component';
 import { QpQuestionEditorComponent } from './components/qp-question-editor/qp-question-editor.component';
+import { QpPrintableViewComponent } from '../../components/question-paper-printable-view/question-paper-printable-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { QpQuestionEditorComponent } from './components/qp-question-editor/qp-qu
     QpSetupComponent,
     QpToolbarComponent,
     QpTemplateLoaderComponent,
-    QpQuestionEditorComponent
+    QpQuestionEditorComponent,
+    QpPrintableViewComponent
     ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { QpQuestionEditorComponent } from './components/qp-question-editor/qp-qu
     QpPreviewComponent,
     QpSetupComponent,
     QpTemplateLoaderComponent,
-    QpQuestionEditorComponent
+    QpQuestionEditorComponent,
+    QpPrintableViewComponent
   ]
 })
 export class QuestionPaperEditorModule { }

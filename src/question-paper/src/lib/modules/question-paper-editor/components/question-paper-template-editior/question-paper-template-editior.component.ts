@@ -20,17 +20,17 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
   @ViewChild('content')
   private content!: ToolbarComponent;
   sections: any = [];
-  defaultJson = {
-    title: '',
-    question_type: 'Multiple Choice',
-    options: [
-      'Multiple Choice',
-      'Match the Column',
-      'Open Ended',
-      'Fill in the Blank',
-      'Hotspot',
-    ],
-  };
+  // defaultJson = {
+  //   title: '',
+  //   question_type: 'Multiple Choice',
+  //   options: [
+  //     'Multiple Choice',
+  //     'Match the Column',
+  //     'Open Ended',
+  //     'Fill in the Blank',
+  //     'Hotspot',
+  //   ],
+  // };
 
   // public templates = [
   //   {
@@ -328,8 +328,72 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
     config.keyboard = false;
   }
 
+  getToolBarEvent(key:string){
+    switch(key){
+      case "template":
+        this.createNewQuestion();
+        break;
+      case "add":
+        this.addSection();
+        break;
+        case "question":
+          this.addQuestion()
+          break;
+    }
+    // if(key == "add"){
+    //    this.addSection();
+    // }
+    // else {
+    //   this.addQuestion();
+    // }
+    // if(key =="section"){
+       
+    // }
+  }
+
+  SetisPrintable(status:boolean){
+    this.isPrintable = status;
+  }
+  
+  // addSection() {
+  //   var json = JSON.parse(JSON.stringify(this.defaultSection));
+  //   json.sectionNo = this.sections.length+1;
+  //   json.contents.push({name:"mcq",options:[],title:"untitled question"})
+  //   this.pageSections.push(json);
+    
+  //   // this.sections.push('section ' + this.sections.length);
+  // }
+
+  pageSections:any[] = [];
+  // [{"name":""}]
+  defaultSection = {"name":"Untitled Section",contents:[],"sectionNo":0}
+  defaultJson = {
+    title: '',
+    question_type: 'Multiple Choice',
+    options: [
+      'Multiple Choice',
+      'Match the Column',
+      'Open Ended',
+      'Fill in the Blank',
+      'Hotspot',
+    ],
+  };
+
+  addQuestion(){
+    this.pageSections[0].contents.push({name:"mcq",type:"mcq",options:[],title:"untitled question"})
+  }
+
+  
+  addSection() {
+    var json = JSON.parse(JSON.stringify(this.defaultSection));
+    json.sectionNo = this.sections.length+1;
+    json.contents.push({name:"mcq",options:[],title:"untitled question"})
+    this.pageSections.push(json);
+  }
+
 
   ngOnInit(): void {
+    this.addSection();
     setTimeout(() => {
       // this.openToolbarContent(this.content);
     }, 3000)
@@ -392,24 +456,10 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
     // this.questionPaperService.isQpEditor = false;
   }
 
-  SetisPrintable(status: boolean) {
-    this.isPrintable = status;
-  }
-  addSection() {
-    this.sections.push('section ' + this.sections.length);
-  }
-
   toggle() {
     this.show = !this.show;
   }
-  getToolBarEvent(key: string) {
-    if (key == "add") {
-      this.addSection();
-    }
-    else if (key == "section") {
-
-    }
-  }
+ 
   removeSection(key: any) {
     this.sections.splice(this.sections.indexOf(key), 1);
   }
@@ -422,7 +472,11 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
   }
   show = true;
   createNewQuestion() {
-    this.isdefaultQuestion = !this.isdefaultQuestion;
+    this.pageSections[0].contents.push({name:"template",type:"template",options:[],title:"untitled template"})
+
+    // this.isdefaultQuestion = !this.isdefaultQuestion;
+    // this.sections.push('section ' + this.sections.length);
+
     // this.selectTemplate('SCQ');
   }
 

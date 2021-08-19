@@ -1,6 +1,7 @@
 <tce-qp-qp-preview [isPrintable]="isPrintable" #preview></tce-qp-qp-preview>
+<tce-qp-qp-printable-view #printable></tce-qp-qp-printable-view>
 <button (click)="SetisPrintable(false);open(preview)">Preview</button>
-<button (click)="SetisPrintable(true);open(preview)">Print</button>
+<button (click)="SetisPrintable(true);open(printable)">Print</button>
 
 
 
@@ -82,33 +83,31 @@
 
 
 
-      <div *ngFor="let key of sections">
-        <div *ngIf="key" class="section-header">
-          ............................................................................{{key}}............................................................................
-          <span>
-            <img src="https://img.icons8.com/material-sharp/2x/menu-2.png" (click)="removeSection(key)" />
-
-          </span>
-          <div class="section-content">
-            <div *ngIf="isdefaultQuestion">
-              <!-- <select (change)="selectTemplate($event.target.value)" class="questiontype">
-                <option *ngFor="let template of templates" [value]="template.type">{{template.type}}</option>
-              </select>
-              <div>Marks 20</div>
-              <div>{{defaultJson.question_type}}</div>
-              <div>
-                question paper editor
-              </div> -->
-              <!-- <mcq-single-select-layout [templateData]="templateData" [previewState]="previewState" [submit]="submit"
-                [save]="save" [metadataSidebar]="metadata" [viewDevice]="viewDevice" [layoutView]="layoutView">
-
-              </mcq-single-select-layout> -->
-              <app-qp-question-editor></app-qp-question-editor>
-              <!-- <app-qp-template-loader [templateData]="templateData" [previewState]="previewState"></app-qp-template-loader> -->
-            </div>
+      <div *ngFor="let section of pageSections">
+        <h2 contenteditable="true">{{section.name}}</h2>
+        <div *ngFor="let content of section.contents">
+        <div [ngSwitch]="content.name">
+          <div *ngSwitchCase="'image'">
+               <img src="{{content.path}}"/>
+          </div>
+          <div *ngSwitchCase="'mcq'">
+           <div contenteditable="true">
+            {{content.title}}
+           </div>  <span (click)="content.options.push('option')">Add option</span>             <div *ngFor="let option of content.options">
+              <input type="checkbox" />
+            <span contenteditable="true">
+              {{option}}
+            </span>  
+             </div>
+             
+          </div>
+          <div *ngSwitchCase="'template'">
+            <app-qp-question-editor></app-qp-question-editor>
           </div>
         </div>
-      </div>
+        </div>
+    </div>
+
       <!-- <ng-template #targetRefView></ng-template> -->
       <button type="button" class="btn btn-outline-primary btn-lg w-100" (click)="createNewQuestion()">Create New
         Question</button>
