@@ -8,6 +8,8 @@ export class QuestionPaperService {
   
   isQpEditor:boolean = false;
   qpSubscription = new Subject();
+
+  qpHomePage = new Subject();
   constructor() { }
   uuidv4() {
     return 'qp_'+'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

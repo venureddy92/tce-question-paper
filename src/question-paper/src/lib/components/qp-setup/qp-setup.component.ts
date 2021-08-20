@@ -42,10 +42,12 @@ export class QpSetupComponent {
   defineTemplate(content:any){
     this.createLocalStorage();
     this.modalService.open(content.content, { windowClass: 'dark-theme-modal',size: 'lg', centered: true });
+
   }
   continueWithoutTemplate(){
     this.createLocalStorage();
     this.questionPaperService.isQpEditor = true;
+    this.questionPaperService.qpHomePage.next("editor");
   }
   createLocalStorage(){
   var guuid = this.questionPaperService.uuidv4();
