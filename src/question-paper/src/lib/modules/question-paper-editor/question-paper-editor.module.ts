@@ -14,6 +14,8 @@ import { QpToolbarComponent } from '../../components/qp-toolbar/qp-toolbar.compo
 import { QpTemplateLoaderComponent } from './components/qp-template-loader/qp-template-loader.component';
 import { QpQuestionEditorComponent } from './components/qp-question-editor/qp-question-editor.component';
 import { QpPrintableViewComponent } from '../../components/question-paper-printable-view/question-paper-printable-view.component';
+import { QstemModule } from 'src/quiz-templates/src/lib/sharedComponents/qstem/qstem.module';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { QpPrintableViewComponent } from '../../components/question-paper-printa
     QuizTemplatesModule,
     McqSingleSelectModule,
     FibTextModule,
+    QstemModule,
+    QuillModule.forRoot(),
       ],
   exports:[
     QpEditorComponent,

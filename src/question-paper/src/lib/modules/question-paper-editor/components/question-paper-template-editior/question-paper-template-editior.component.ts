@@ -321,6 +321,14 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
   //   FIB: FibTextLayoutComponent,
   //   essay: EssayTextLayoutComponent
   // };
+
+  modules = {
+    imageResize: {
+      displaySize: true,
+    },
+    // toolbar: false,
+    clipboard: true,
+  };
   constructor(config: NgbModalConfig, private modalService: NgbModal,
     private componentFactoryResolver: ComponentFactoryResolver) {
     // customize default values of modals used by this component tree
@@ -336,8 +344,11 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
       case "add":
         this.addSection();
         break;
-        case "question":
-          this.addQuestion()
+      case "question":
+        this.addQuestion()
+        break;
+        case "text":
+          this.addText()
           break;
     }
     // if(key == "add"){
@@ -349,6 +360,10 @@ export class QuestionPaperTemplateEditiorComponent implements OnInit {
     // if(key =="section"){
        
     // }
+  }
+
+  addText(){
+    this.pageSections[0].contents.push({name:"text",type:"text",options:[],title:"untitled template"})
   }
 
   SetisPrintable(status:boolean){
